@@ -250,6 +250,8 @@ export class MapView extends MapViewBase {
                                     let container = marker._view;
                                     if (!container) {
                                         container = new GridLayout();
+                                        container.rows = 'auto';
+                                        container.columns = 'auto';
                                         marker._view = container;
                                         const activity = Utils.android.getCurrentActivity();
                                         container._setupAsRootView(activity);
@@ -268,7 +270,7 @@ export class MapView extends MapViewBase {
                                         info?.view?.parent?.removeChild?.(info.view);
                                         container.addChild(info.view);
                                     }
-                                    return info.view.nativeView;
+                                    return container.nativeView;
                                 }
                                 else if (info.view instanceof android.view.View) {
                                     return info.view;
